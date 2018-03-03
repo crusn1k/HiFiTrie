@@ -60,7 +60,7 @@ public class HiFiTrieUtil {
         }
         List<String> newTokens = tokens.size() == 1 ? new ArrayList<>(0) : tokens.subList(1, tokens.size());
         String value = getValue(matchingNode, newTokens);
-        if (null == value) {
+        if (null == value && !"*".equals(matchingNode.getValue())) {
             matchingNode = node.getChildNodes().get("*");
             return null == matchingNode ? null : getValue(matchingNode, newTokens);
         }
